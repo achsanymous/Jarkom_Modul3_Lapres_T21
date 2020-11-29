@@ -10,7 +10,7 @@ I Komang Aditya Mahadiharja (05311840000042)
 
 Anri adalah seorang mahasiswa tingkat akhir yang sedang mengerjakan TA mengenai DHCP dan Proxy. Bu Meguri sebagai dosen pembimbing Anri memberikan tugas pertamanya, (1) yaitu untuk **membuat topologi jaringan** demi kelancaran TA-nya dengan kriteria sebagai berikut:
 
-@photosoal
+![soal](/modul3/topologi%20soal.jpg)
 
 Anri sudah pernah mempelajari teknik Jaringan Komputer sehingga Anri dapat membuat topologi tersebut dengan mudah. Bu Meguri memerintahkan Anri untuk menjadikan **SURABAYA** sebagai router, **MALANG** sebagai DNS Server, **TUBAN** sebagai DHCP server, serta **MOJOKERTO** sebagai Proxy server, dan UML lainnya sebagai client. 
 
@@ -29,25 +29,27 @@ Kriteria lain yang diminta Bu Meguri pada topologi jaringan tersebut adalah:
 
 - (6) Client di subnet 1 mendapatkan peminjaman alamat IP selama 5 menit, sedangkan (6) client pada subnet 3 mendapatkan peminjaman IP selama 10 menit.
 
-langkah-langkah
+#langkah-langkah
 
 1. membuat file topologi.sh seperti pada berikut 
 
-@phototopologi
+![soal](/modul3/topologi.jpg)
 
 lalu dijalankan dengan `bash topologi.sh`
 
 2. lalu pada uml SURABAYA buka `nano /etc/sysctl.conf` dan hapus # pada kalimat net.ipv4.ip_forward=1 dan jalankan `sysctl -p`
 
+![soal](/modul3/sysctl.jpg)
+
 3. konfigurasi interface dengan menggunakan `nano /etc/network/interfaces` pada semua uml kecuali uml client
 
-@photosurabaya
+![soal](/modul3/surabaya.jpg)
 
-@photomalang
+![soal](/modul3/malang.jpg)
 
-@photomojokerto
+![soal](/modul3/tuban.jpg)
 
-@phototuban
+![soal](/modul3/mojokerto.jpg)
 
 4. lalu restart dengan `service networking restart`
 
@@ -58,29 +60,33 @@ lalu dijalankan dengan `bash topologi.sh`
 7. setelah itu jalankan `apt-get install isc-dhcp-relay` pada uml SURABAYA lalu pada configurasi pertama masukkan `IP TUBAN` dan `ETH1 ETH2 ETH3` pada konfigurasi ke 2 
   ps. kosongkan kolom ke 3
 
-@relay1
-
-@relay2
-
-@relay3
-
 8. lalu buat dchp server pada uml TUBAN dengan mengetikkan `apt-get install isc-dhcp-server`
 
 9. lalu buka `nano /etc/default/isc-dhcp-server` dan ubah pada kalimat paling bawah menjadi `INTERFACEsv4="eth0`
 
-@interfaces
+![soal](/modul3/dhcpinterfaces.jpg)
 
 10.lalu buka `nano /etc/dhcp/dhcpd.conf` dan masukkan sebagai berikut 
 
-@dhcp.conf
+![soal](/modul3/dhcpconf.jpg)
 
 11. restart dhcp server dengan `service isc-dhcp-server restart`
 
 12 lalu buka uml GRESIK, SIDOARJO, MADIUN, BANYUWANGI dan ubah `nano /etc/network/interfaces` menjadi seperti berikut :
 
+
+
 `auto eth0
 
 iface eth0 inet dhcp`
+
+![soal](/modul3/clientinterfaces.jpg)
+
+
+hasil 
+
+![soal](/modul3/hasildhcp.jpg)
+
 
 # soal 7-9
 
@@ -106,16 +112,16 @@ Anri sudah menjadwal pengerjaan TA-nya (8) setiap hari Selasa-Rabu pukul 13.00-1
 
 4. lalu buka konfigurasi squid dengan `nano /etc/squid/squid.conf` dan tulis seperti berikut,
 
-@konfigurasisquid
+![soal](/modul3/squidconf.jpg)
 
 5. lalu buka `nano /etc/squid/squid.conf` dan tulis waktu yang diinginkan sebagai berikut 
 
-@acl
+![soal](/modul3/squidacl.jpg)
 
 6. lalu restart squid dengan `service squid restart`
 
 7. lalu untuk menjalankankannya buka setting pada perangkat anda pada bagian proxy dan ubah sebagai berikut,
 
-@settingproxy
+![soal](/modul3/squidproxy.jpg)
 
 8. lalu buka browser baru dalam keadaan **incognito/private** dan coba mengakses monta.if.its.ac.id
