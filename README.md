@@ -39,7 +39,7 @@ lalu dijalankan dengan `bash topologi.sh`
 
 2. lalu pada uml SURABAYA buka `nano /etc/sysctl.conf` dan hapus # pada kalimat net.ipv4.ip_forward=1 dan jalankan `sysctl -p`
 
-3. konfigurasi interface pada semua uml kecuali uml client
+3. konfigurasi interface dengan menggunakan `nano /etc/network/interfaces` pada semua uml kecuali uml client
 
 @photosurabaya
 
